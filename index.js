@@ -22,3 +22,13 @@ const reducer =(state = initialState, action)=>{
         default: return state
     }
 }
+
+
+const store = createStore(reducer)
+
+console.log('Initial state', store.getState())
+const unsubscribe = store.subscribe(()=>console.log('Updated state', store.getState()))
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+unsubscribe()
